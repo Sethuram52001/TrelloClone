@@ -1,6 +1,8 @@
 // add list or a card
 import React, { Component } from 'react';
 import Textarea from "react-autosize-textarea"; 
+import {connect} from 'react-redux';
+import {addList} from '../actions'
 
 class AddButton extends Component {
     
@@ -27,6 +29,17 @@ class AddButton extends Component {
         })
     }
 
+    handleAddList = () => {
+        const {dispatch} = this.props;
+        const {text} = this.state;
+
+        if(text) {
+            
+            dispatch(addList(text))
+        }
+        return;
+    }
+
     ToAddCard = () => {
         const list = this.props.list;
         const buttonType = list ? "Add another list" : "Add another card";
@@ -48,11 +61,11 @@ class AddButton extends Component {
         
         return (
             <div>
-            <div className="card">
+            <div className="card" style={{width: "80%"}}>
                 <Textarea placeholder={placeHolder} autoFocus onBlur={this.closeForm} onChange={this.handleChange} value={this.state.text}></Textarea>
             </div>
             <div>
-                <button className="btn btn-success">{buttonTitle}</button>
+                <button onMouseDown={this.handleAddList} className="btn btn-success">{buttonTitle}</button>
                 <button type="button" className="close" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -68,4 +81,4 @@ class AddButton extends Component {
     }
 }
  
-export default AddButton;
+export default connect()(AddButton);
