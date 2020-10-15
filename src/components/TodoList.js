@@ -9,7 +9,7 @@ class TodoList extends Component {
             <div style={{width: "30%", backgroundColor: "#ebecf0", padding: "1%", margin: "5px", display: "inline-block"}}>
                 <p>{this.props.title}</p>
                 {this.props.cards.map(card => <TodoCard key={card.id} card={card}></TodoCard>)}
-                <AddButton></AddButton>
+                <AddButton listID={this.props.listID}></AddButton>
             </div>
          );
     }

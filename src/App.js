@@ -15,7 +15,7 @@ class App extends Component {
       <div>
         <h1>Hello World</h1>
         <div style={{display: "flex"}}>
-        {lists.map(list => <TodoList key={list.id} title={list.title} cards={list.cards}></TodoList>)}
+        {lists.map(list => <TodoList listID={list.id} key={list.id} title={list.title} cards={list.cards}></TodoList>)}
         <AddButton list></AddButton>
         </div>
       </div>

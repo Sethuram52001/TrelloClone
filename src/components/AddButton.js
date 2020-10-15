@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import Textarea from "react-autosize-textarea"; 
 import {connect} from 'react-redux';
-import {addList} from '../actions'
+import {addList, addCard} from '../actions'
 
 class AddButton extends Component {
     
@@ -37,7 +37,20 @@ class AddButton extends Component {
             
             dispatch(addList(text))
         }
+
+        this.setState({
+            text: ""
+        })
         return;
+    }
+
+    handleAddCard = () => {
+        const { dispatch, listID } = this.props;
+        const { text } = this.state;
+
+        if(text) {
+            dispatch(addCard(listID, text))
+        }
     }
 
     ToAddCard = () => {
@@ -65,7 +78,7 @@ class AddButton extends Component {
                 <Textarea placeholder={placeHolder} autoFocus onBlur={this.closeForm} onChange={this.handleChange} value={this.state.text}></Textarea>
             </div>
             <div>
-                <button onMouseDown={this.handleAddList} className="btn btn-success">{buttonTitle}</button>
+                <button onMouseDown={ list ? this.handleAddList : this.handleAddCard} className="btn btn-success">{buttonTitle}</button>
                 <button type="button" className="close" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
