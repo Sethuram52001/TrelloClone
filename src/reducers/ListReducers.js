@@ -1,7 +1,7 @@
 import { CONSTANTS } from '../actions/index';
 
-let ListID = 2;
-let cardID = 2;
+let ListID = Math.floor(Math.random()*100000);
+let cardID = Math.floor(Math.random()*100000);
 
 const initialState = [
     {
@@ -20,14 +20,14 @@ const initialState = [
     },
     {
         title: "2nd card",
-        id: 1,
+        id: Math.floor(Math.random() * 100000),
         cards: [
             {
-                id: 0,
+                id: Math.floor(Math.random() * 100000),
                 text: "text 1"
             },
             {
-                id: 1,
+                id: Math.floor(Math.random() * 100000),
                 text: "text 2"
             }
         ]
