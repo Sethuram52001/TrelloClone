@@ -6,14 +6,14 @@ let cardID = 2;
 const initialState = [
     {
         title: "1st card",
-        id: 0,
+        id: Math.floor(Math.random() * 100000),
         cards: [
             {
-                id: 0,
+                id: Math.floor(Math.random() * 100000),
                 text: "text 1"
             },
             {
-                id: 1,
+                id: Math.floor(Math.random() * 100000),
                 text: "text 2"
             }
         ]

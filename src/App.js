@@ -4,14 +4,20 @@ import "font-awesome/css/font-awesome.min.css";
 import TodoList from './components/TodoList';
 import AddButton from './components/AddButton';
 import { connect } from 'react-redux';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 class App extends Component {
+
+  onDragEnd = () => {
+    // Todo rendering logic
+  }
 
   render() {
     
     const lists = this.props.lists;
 
-    return ( 
+    return (
+      <DragDropContext onDragEnd={this.onDragEnd}>
       <div>
         <h1>Hello World</h1>
         <div style={{display: "flex"}}>
@@ -19,6 +25,7 @@ class App extends Component {
         <AddButton list></AddButton>
         </div>
       </div>
+      </DragDropContext> 
      );
   }
 }
