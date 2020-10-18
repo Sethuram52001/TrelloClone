@@ -5,11 +5,26 @@ import TodoList from './components/TodoList';
 import AddButton from './components/AddButton';
 import { connect } from 'react-redux';
 import { DragDropContext } from 'react-beautiful-dnd';
+import {sort} from "./actions";
 
 class App extends Component {
 
-  onDragEnd = () => {
+  onDragEnd = (result) => {
     // Todo rendering logic
+    const { destination, source, draggableId } = result;
+
+    if(!destination) {
+      return;
+    }
+
+    this.props.dispatch(sort(
+      source.droppableId,
+      destination.droppableId,
+      source.index,
+      destination.index,
+      draggableId
+    ))
+
   }
 
   render() {

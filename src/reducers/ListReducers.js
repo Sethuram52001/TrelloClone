@@ -1,33 +1,34 @@
+import { Droppable } from 'react-beautiful-dnd';
 import { CONSTANTS } from '../actions/index';
 
-let ListID = Math.floor(Math.random()*100000);
-let cardID = Math.floor(Math.random()*100000);
+let ListID = 3;
+let cardID = 5;
 
 const initialState = [
     {
         title: "1st card",
-        id: Math.floor(Math.random() * 100000),
+        id: `list-id-1`,
         cards: [
             {
-                id: Math.floor(Math.random() * 100000),
+                id: `card-id-1`,
                 text: "text 1"
             },
             {
-                id: Math.floor(Math.random() * 100000),
+                id: `card-id-2`,
                 text: "text 2"
             }
         ]
     },
     {
         title: "2nd card",
-        id: Math.floor(Math.random() * 100000),
+        id: `list-id-2`,
         cards: [
             {
-                id: Math.floor(Math.random() * 100000),
+                id: `card-id-3`,
                 text: "text 1"
             },
             {
-                id: Math.floor(Math.random() * 100000),
+                id: `card-id-4`,
                 text: "text 2"
             }
         ]
@@ -41,17 +42,17 @@ const ListReducer = (state = initialState, action) => {
             const title = action.payload;
             const newList = {
                 title: title,
-                id: ListID,
+                id: `list-id-${ListID}`,
                 cards: []
             }
             ListID+=1
             return [ ...state, newList ]
         }
 
-        case CONSTANTS.ADD_CARD:
+        case CONSTANTS.ADD_CARD: {
             const newCard = {
                 text: action.payload.text,
-                id: cardID
+                id: `card-id-${cardID}`
             }
             cardID+=1;
             const newState = state.map(list => {
@@ -67,6 +68,17 @@ const ListReducer = (state = initialState, action) => {
             });
 
             return newState;
+        }
+
+       case CONSTANTS.DRAG_HAPPENDED:
+           const { droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd, draggableId} = action.payload;
+           const newState = [...state];
+           if(droppableIdStart === droppableIdEnd) {
+               let list = state.find(list => droppableIdStart === list.id);
+               let card = list.cards.splice(droppableIndexStart, 1);
+               list.cards.splice(droppableIndexEnd, 0, ...card);
+           }
+           return newState;
 
         default:
             return state;
