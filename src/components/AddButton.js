@@ -7,7 +7,7 @@ import {addList, addCard} from '../actions'
 class AddButton extends Component {
     
     state={
-        formState: false,
+        formState: false, // to check whether the form is opened or not
         text: ""
     }
 
@@ -34,8 +34,7 @@ class AddButton extends Component {
         const {text} = this.state;
 
         if(text) {
-            
-            dispatch(addList(text))
+            dispatch(addList(text)); // handled by redux
         }
 
         this.setState({
@@ -49,8 +48,12 @@ class AddButton extends Component {
         const { text } = this.state;
 
         if(text) {
-            dispatch(addCard(listID, text))
+            dispatch(addCard(listID, text)); // handled by redux
         }
+        
+        this.setState({
+            text: ""
+        })
     }
 
     ToAddCard = () => {

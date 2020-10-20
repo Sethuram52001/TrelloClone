@@ -4,14 +4,14 @@ import "font-awesome/css/font-awesome.min.css";
 import TodoList from './components/TodoList';
 import AddButton from './components/AddButton';
 import { connect } from 'react-redux';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import {sort} from "./actions";
 
 class App extends Component {
 
+  // to persist the drag and drop of dnd action
   onDragEnd = (result) => {
-    // Todo rendering logic
-    const { destination, source, draggableId } = result;
+    const { destination, source, draggableId, type } = result;
 
     if(!destination) {
       return;
@@ -22,7 +22,8 @@ class App extends Component {
       destination.droppableId,
       source.index,
       destination.index,
-      draggableId
+      draggableId,
+      type
     ))
 
   }
@@ -32,19 +33,25 @@ class App extends Component {
     const lists = this.props.lists;
 
     return (
+      // the dnd container
       <DragDropContext onDragEnd={this.onDragEnd}>
       <div>
         <h1>Hello World</h1>
-        <div style={{display: "flex"}}>
-        {lists.map(list => <TodoList listID={list.id} key={list.id} title={list.title} cards={list.cards}></TodoList>)}
-        <AddButton list></AddButton>
-        </div>
+        <Droppable droppableId="all-lists" direction="horizontal" type="list">
+          {provided => (
+          <div style={{display: "flex"}} {...provided.droppableProps} ref={provided.innerRef}>
+            {lists.map((list, index) => <TodoList listID={list.id} index={index} key={list.id} title={list.title} cards={list.cards}></TodoList>)}
+            <AddButton list></AddButton>
+          </div>
+          )}
+        </Droppable>
       </div>
       </DragDropContext> 
      );
   }
 }
 
+// global state of the lists, using redux
 const mapStateToProps = state => ({
   lists: state.lists
 })
