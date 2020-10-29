@@ -1,1 +1,26 @@
-/*should we*/
+.hide {
+    display: none;
+}
+
+.editButton {
+    display: inline-block;
+    height: auto;
+}
+
+.editButton:hover  .hide  {
+    display: inline-block;
+    cursor: pointer;
+    float: right;
+}
+
+/*.renderForm {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 3px;
+    height: 36px;
+    margin-left: 8px;
+    width: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
+}*/

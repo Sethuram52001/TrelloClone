@@ -33,7 +33,7 @@ class Board extends Component {
                     if (list) {
                         const listCards = list.cards.map(cardId => cards[cardId]);
                         return (
-                            <div style={{maxWidth: "300px"}}> 
+                            <div style={{ width: "272px", margin: "0 4px"}}> 
                                 <TodoList
                                     listID={list.id}
                                     key={list.id}

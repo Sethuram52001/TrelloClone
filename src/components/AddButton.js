@@ -60,7 +60,7 @@ class AddButton extends Component {
         const buttonTitle = list ? "Add list" : "Add card";
 
         return (
-            <div>
+            <div className="renderForm">
                 <div className="card" style={{ width: "80%" }}>
                     <TextArea placeholder={placeHolder} autoFocus onBlur={this.closeForm} onChange={this.handleChange} value={this.state.text}></TextArea>
                 </div>
@@ -77,10 +77,12 @@ class AddButton extends Component {
     ToAddCard = () => {
         const { list } = this.props;
         const buttonType = list ? "Add another list" : "Add another card";
+        const buttonColor = list ? "#5ba4cf" : "transparent";
+        const buttonTextColor = list ? "white" : "black";
         const buttonTextOpacity = list ? 1 : 0.5;
 
         return (
-            <div style={{opacity: buttonTextOpacity, cursor: "pointer"}} onClick={this.openForm}>
+            <div style={{opacity: buttonTextOpacity, cursor: "pointer", color: buttonTextColor, backgroundColor: buttonColor, width: "272px", height: "32px", borderRadius: "4px", margin: "10px"}} onClick={this.openForm}>
                 <p><i className="fa fa-plus" aria-hidden="true"></i>{buttonType}</p>
             </div>
         )

@@ -71,7 +71,7 @@ class TodoList extends Component {
                     <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                         <Droppable droppableId={String(listID)} type="card">
                         {(provided) => (
-                        <div className="card" style={{backgroundColor: "#ebecf0", width: "90%", margin: "10px", marginTop: "10", padding: "2px"}}>{/*  style={{width: "30%", background: "#ebecf0", margin: "10px", marginTop: "10", padding: "2px"}}*/}
+                        <div className="card" style={{backgroundColor: "#ebecf0", width: "100%", margin: "10px", marginTop: "10", padding: "2px", borderRadius: "3px", maxHeight: "100%", boxSizing: "border-box"}}>
                         {this.state.editing ? (this.renderEditForm()) : (
                         <p>
                             {this.props.title}
@@ -81,7 +81,7 @@ class TodoList extends Component {
                         )}
                         <div {...provided.droppableProps} ref={provided.innerRef}>   
                         {cards.map((card, index) => (
-                            <div style={{width: "90%", margin: "0 auto 10px"}}>
+                            <div style={{width: "95%", margin: "0 auto 10px"}}>
                                 <TodoCard
                                     key={card.id}
                                     text={card.text}

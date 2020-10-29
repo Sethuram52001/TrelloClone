@@ -67,11 +67,13 @@ class TodoCard extends Component {
             <Draggable draggableId={String(id)} index={index}>
                 {(provided) => (
                 <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                    <div className="card">
-                    <p>
+                    <div className="card" >
+                    <p className="editButton">
                         {text}
-                        <i className="fa fa-pencil-square-o" onMouseDown={this.handleEdit}></i>
-                        <i onMouseDown={this.handleDelete} className="fa fa-trash" aria-hidden="true"></i>
+                        <span className="hide">
+                            <i className="fa fa-pencil-square-o" onMouseDown={this.handleEdit}></i>
+                            <i onMouseDown={this.handleDelete} className="fa fa-trash" aria-hidden="true" style={{paddingRight: "2px"}}></i>
+                        </span>
                     </p>
                     </div>
                 </div>
