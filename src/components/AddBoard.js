@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 class AddBoard extends Component {
     
     state = {
-        title: "3"
+        title: "Create new board"
     }
     
     handleAddBoard = () => {

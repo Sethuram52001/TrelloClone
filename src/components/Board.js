@@ -3,9 +3,20 @@ import TodoList from "./TodoList";
 import AddButton from "./AddButton";
 import { connect } from "react-redux";
 import { sort } from "../redux/actions";
+import { activeBoard } from "../redux/actions";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 class Board extends Component {
+
+    state = {
+        boardID: ""
+    }
+
+    componentDidMount() {
+        const { boardID } = this.props.match.params;
+        this.props.dispatch(activeBoard(boardID));
+        this.setState({boardID})
+    }
 
     onDragEnd = (result) => {
         // come here again
@@ -20,6 +31,8 @@ class Board extends Component {
     render() { 
 
         const { lists, cards, boards } = this.props;
+        const boardID = this.state.boardID;
+        console.log(boardID);
         const board = boards["board-0"];
         const listOrder = board.lists;
 

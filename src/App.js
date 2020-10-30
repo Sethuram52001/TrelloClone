@@ -14,7 +14,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path="/" exact component={BoardCollection} />
-            <Route path="/board" exact component={Board} />
+            <Route path="/:boardID" exact component={Board} />
           </Switch>
         </Router>
       </div>
