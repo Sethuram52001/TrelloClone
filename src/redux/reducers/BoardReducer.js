@@ -46,6 +46,20 @@ const boardReducer = (state = initialState, action) => {
             return { ...state, [boardID]: board };
         }
             
+        case CONSTANTS.ADD_BOARD: {
+            const { title, id } = action.payload;
+            const newID = `board-${id}`;
+            const newBoard = {
+                id: newID,
+                title,
+                lists: []
+            }
+            console.log("add board from reducer")
+            console.log("new state: " + { ...state, [newID]: newBoard });
+            console.log("title: " + title + ", id:" + id);
+            return { ...state, [newID]: newBoard };
+        }
+            
         default:
             return state;
     }

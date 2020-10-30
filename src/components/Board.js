@@ -3,7 +3,7 @@ import TodoList from "./TodoList";
 import AddButton from "./AddButton";
 import { connect } from "react-redux";
 import { sort } from "../redux/actions";
-import { DragDropContext,Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 class Board extends Component {
 
@@ -50,6 +50,7 @@ class Board extends Component {
                 </div>          
                 )}
                 </Droppable>
+                {/*<AddButton list></AddButton>*/}
             </DragDropContext>
          );
     }
