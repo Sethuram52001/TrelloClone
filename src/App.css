@@ -13,6 +13,61 @@
     float: right;
 }
 
+.renderBoard {
+    flex: 1;
+    height: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.board-display {
+    height: 100px;
+    width: 200px;
+    background-color: #0079bf;
+    color: white;
+    padding: 10px;
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+/*
+  height: 280px;
+  width: 280px;
+  background: yellow;
+  padding: 10px;
+  margin: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px grey;
+*/
+
+/*
+  flex: 1;
+  height: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+*/
+
 /*.renderForm {
     display: flex;
     align-items: center;

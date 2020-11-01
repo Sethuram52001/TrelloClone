@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { sort } from "../redux/actions";
 import { activeBoard } from "../redux/actions";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import store from '../redux/store';
 
 class Board extends Component {
 
@@ -15,17 +16,24 @@ class Board extends Component {
     componentDidMount() {
         const { boardID } = this.props.match.params;
         this.props.dispatch(activeBoard(boardID));
-        this.setState({boardID})
+        this.setState({ boardID });
+        console.log("active : " + store.getState().active)
+        document.body.style.backgroundColor = "#0079bf";
+    }
+
+    componentDidUpdate() {
+        console.log("active state from board collection: " + store.getState().active);
     }
 
     onDragEnd = (result) => {
         // come here again
+        //const boardID = this.state.boardID;
         const { destination, source, draggableId, type } = result;
         if (!destination) {
             return;
         }
 
-        this.props.dispatch(sort(source.droppableId, destination.droppableId, source.index, destination.index, draggableId, type));
+        this.props.dispatch(sort(source.droppableId, destination.droppableId, source.index, destination.index, draggableId, type, this.state.boardID));
     }
     
     render() { 
@@ -33,7 +41,12 @@ class Board extends Component {
         const { lists, cards, boards } = this.props;
         const boardID = this.state.boardID;
         console.log(boardID);
-        const board = boards["board-0"];
+        const anotherBoard = boards[boardID];
+        console.log(anotherBoard);
+        const board = boards[boardID];
+        if (!board) {
+            return <p>Board not found</p>
+        }
         const listOrder = board.lists;
 
         return ( 
@@ -53,13 +66,14 @@ class Board extends Component {
                                     title={list.title}
                                     cards={listCards}
                                     index={index}
+                                    boardID={this.state.boardID}
                                 ></TodoList>
                             </div>
                         );
                     }
                 })}
                 {provided.placeholder}
-                <AddButton list></AddButton>
+                <AddButton list boardID={this.state.boardID}></AddButton>
                 </div>          
                 )}
                 </Droppable>

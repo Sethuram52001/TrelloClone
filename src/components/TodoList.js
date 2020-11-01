@@ -56,9 +56,9 @@ class TodoList extends Component {
 
     handleDelete = (e) => {
         e.preventDefault();
-        const { listID } = this.props;
+        const { listID, boardID } = this.props;
         console.log("delete list is called" + listID);
-        this.props.dispatch(removeList(listID));
+        this.props.dispatch(removeList(listID,boardID));
     }
 
     render() {
@@ -73,10 +73,12 @@ class TodoList extends Component {
                         {(provided) => (
                         <div className="card" style={{backgroundColor: "#ebecf0", width: "100%", margin: "10px", marginTop: "10", padding: "2px", borderRadius: "3px", maxHeight: "100%", boxSizing: "border-box"}}>
                         {this.state.editing ? (this.renderEditForm()) : (
-                        <p>
+                        <p onMouseDown={this.handleEdit} className="editButton">
                             {this.props.title}
-                            <i className="fa fa-pencil-square-o" onMouseDown={this.handleEdit}></i>
-                            <i className="fa fa-trash" onClick={this.handleDelete}></i>                
+                            <span className="hide">
+                                {/*<i className="fa fa-pencil-square-o"></i>*/}
+                                <i className="fa fa-trash" onClick={this.handleDelete}></i>                
+                            </span>             
                         </p>            
                         )}
                         <div {...provided.droppableProps} ref={provided.innerRef}>   

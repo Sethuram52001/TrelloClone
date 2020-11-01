@@ -12,6 +12,6 @@ export const addBoard = (title) => {
     const id = uuidv4();
     return {
         type: CONSTANTS.ADD_BOARD,
-        payload: {title,id}
+        payload: {title, id}
     }
 }

@@ -53,7 +53,7 @@ class TodoCard extends Component {
         return (
             <div>
                 <TextArea placeholder={this.state.text} value={this.state.text} onChange={this.handleChange}></TextArea>
-                <button onClick={this.closeForm}>close</button>
+                <button onMouseDown={this.closeForm}>close</button>
                 <button onClick={this.handleSave}>save</button>
             </div>
         )

@@ -9,6 +9,10 @@ class AddButton extends Component {
         text: ""
     }
 
+    componentDidUpdate() {
+        console.log(this.props.boardID);
+    }
+
     openForm = () => {
         this.setState({
             formState: true
@@ -31,7 +35,7 @@ class AddButton extends Component {
         const { text } = this.state;
         
         if (text) {
-            this.props.dispatch(addList(text));
+            this.props.dispatch(addList(text, this.props.boardID));
         }
 
         this.setState({

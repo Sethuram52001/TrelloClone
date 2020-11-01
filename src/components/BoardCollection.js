@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 class BoardCollection extends Component {
     state = {}
     
+    componentDidMount() {
+        document.body.style.backgroundColor = "white"
+    }
+
     componentDidUpdate() {
         console.log(this.props.boards);
     }
@@ -25,36 +29,43 @@ class BoardCollection extends Component {
                 {boardOrder.map((boardID) => {
                     const board = boards[boardID];
                     return (
-                        <Link to={`${board.id}`} style={{ background: "white", padding: "0% 5%" }}>{board.title}</Link>
+                        <Link key={boardID} to={`/${board.id}`} style={{textDecoration: "none", color: "white"}}>
+                            <div className="board-display">{board.title}</div>
+                        </Link>
                     )
                 })}
             </div>
         )
-        /*return (
-            <div>
-                <Link to="/">hi</Link>
-            </div>
-        )*/
     }
+
+    /*
+    style={{width: "150px", height: "80px", backgroundColor: "#0079bf", margin: "0 auto", display: "flex", position: "relative", flexDirection: "column"}}
+    */
 
     render() { 
 
         const { boards } = this.props;
 
         return (  
-            <div>
-                board collection
-                <AddBoard boards={boards}></AddBoard>
+            <div style={{padding: "2%"}}>
+                <h1>Board Collection</h1>
+                <h3>
+                    <i className="fa fa-user-o" ></i>
+                    Personal Boards
+                </h3>
+                <div>
+                    <div className="renderBoard" className="board-container">
+                        {this.renderBoards()}
+                    </div>
+                    <AddBoard boards={boards}></AddBoard>
+                </div>
                 <button onClick={this.renderBoardsTest}>console the boards</button>
-                {this.renderBoards()}
             </div>
         );
     }
 }
 
 const mapStateToProps = state => ({
-    lists: state.lists,
-    cards: state.cards,
     boards: state.boards,
     boardOrder: state.boardOrder
 });

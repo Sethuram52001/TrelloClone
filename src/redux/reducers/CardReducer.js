@@ -5,13 +5,16 @@ const initialState = {
         text: `This episode`,
         id: `card-0`,
         list: "list-0"
-    },
+    }
+}
+
+/* 
     "card-1": {
         text: `Next episode`,
         id: `card-1`,
         list: "list-0"
     }
-}
+*/
 
 const cardsReducer = (state = initialState, action) => {
     switch (action.type) {

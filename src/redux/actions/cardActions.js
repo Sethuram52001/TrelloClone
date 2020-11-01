@@ -5,14 +5,14 @@ export const addCard = (listID, text) => {
     const id = uuidv4();
     return {
         type: CONSTANTS.ADD_CARD,
-        payload: {text, listID,id}
+        payload: {text, listID, id}
     }
 }
 
 export const removeCard = (id, listID) => {
     return {
         type: CONSTANTS.REMOVE_CARD,
-        payload: {id,listID}
+        payload: {id, listID}
     }
 }
 

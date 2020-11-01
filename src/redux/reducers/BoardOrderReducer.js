@@ -1,6 +1,5 @@
 import { CONSTANTS } from "../actions";
 import { v4 as uuidv4 } from "uuid";
-import { act } from "react-dom/test-utils";
 
 const initialState = ["board-0"];
 
