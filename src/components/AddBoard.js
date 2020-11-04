@@ -8,9 +8,11 @@ class AddBoard extends Component {
         title: "Create new board"
     }
     
-    handleAddBoard = () => {
+    handleAddBoard = (e) => {
+        e.preventDefault();
         const title = this.state.title; 
         this.props.dispatch(addBoard(title));
+        this.setState({title: "Create new board"})
     }
 
     handleChange = (e) => {
@@ -20,18 +22,18 @@ class AddBoard extends Component {
         })
     }
 
-    createBoard = () => {
+    createBoard = (e) => {
+       // e.preventDefault();
         return (
-            <div>
-                <input onSubmit={this.handleAddBoard} onChange={this.handleChange} value={this.state.title}></input>
-            </div>
+            <form onSubmit={this.handleAddBoard}>
+                <input onChange={this.handleChange} value={this.state.title} type="text" style={{height: "100px", width: "200px", textAlign: "center"}}></input>
+            </form>
         )
     }
 
     render() { 
         return ( 
             <div>
-                <button className="btn btn-success" onClick={this.handleAddBoard}>Create new board</button>
                 {this.createBoard()}
             </div>
          );
@@ -39,3 +41,25 @@ class AddBoard extends Component {
 }
  
 export default connect()(AddBoard);
+
+/*
+<div onClick={this.handleAddBoard} style={{ divackgroundColor: "#97a0af" }} >Create new board</div>
+*/
+
+
+
+    /*createBoard = () => {
+        return (
+            <div>
+                <input onSubmit={this.handleAddBoard} onChange={this.handleChange} value={this.state.title}></input>
+            </div>
+        )
+    }
+
+    helper = () => {
+        return (
+            <form onSubmit={this.handleAddBoard}>
+                <input onChange={this.handleChange} value={this.state.title} type="text"></input>
+            </form>
+        )
+    }*/

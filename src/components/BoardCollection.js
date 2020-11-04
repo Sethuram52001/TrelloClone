@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AddBoard from "./AddBoard";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 class BoardCollection extends Component {
     state = {}
@@ -38,28 +39,21 @@ class BoardCollection extends Component {
         )
     }
 
-    /*
-    style={{width: "150px", height: "80px", backgroundColor: "#0079bf", margin: "0 auto", display: "flex", position: "relative", flexDirection: "column"}}
-    */
-
     render() { 
 
-        const { boards } = this.props;
+        const { boards, boardOrder } = this.props;
 
         return (  
-            <div style={{padding: "2%"}}>
+            <div>
                 <h1>Board Collection</h1>
                 <h3>
                     <i className="fa fa-user-o" ></i>
                     Personal Boards
                 </h3>
-                <div>
-                    <div className="renderBoard" className="board-container">
-                        {this.renderBoards()}
-                    </div>
+                <div className="renderBoard" className="board-container">
+                    {this.renderBoards()}
                     <AddBoard boards={boards}></AddBoard>
                 </div>
-                <button onClick={this.renderBoardsTest}>console the boards</button>
             </div>
         );
     }

@@ -5,29 +5,36 @@ import "font-awesome/css/font-awesome.min.css";
 import Board from "./components/Board";
 import BoardCollection from "./components/BoardCollection";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { connect } from "react-redux";
 
 class App extends Component {
   
   render() { 
+
+    const { boards, boardOrder } = this.props;
+
     return ( 
       <div>
         <Router>
+          <h3 style={{backgroundColor: "#026aa7", color: "white", fontFamily: "cursive"}} class="panel-footer">
+            <Navbar boards={boards} boardOrder={boardOrder} class="fa fa-facebook"></Navbar>
+            <em>Trello</em>
+          </h3>
           <Switch>
             <Route path="/" exact component={BoardCollection} />
-            <Route path="/:boardID" exact component={Board} />
+            <Route path="/:boardID" component={Board} />
           </Switch>
         </Router>
       </div>
      );
   }
 }
- 
-export default App;
 
-/*
-        <div style={{ backgroundColor: "#026aa7", color: "#bcd9ea", fontFamily: "cursive", textAlign: "center"}}> {/*#055a8c 	#026aa7 -apple-system cursive -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif*/
- /*         <h2><em>Trello Clone</em></h2>
-        </div>
-        <Board></Board>
-        <BoardCollection></BoardCollection>
-*/
+const mapStateToProps = state => ({
+    boards: state.boards,
+    boardOrder: state.boardOrder
+});
+ 
+export default connect(mapStateToProps)(App);
+

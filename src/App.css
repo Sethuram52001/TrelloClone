@@ -8,9 +8,9 @@
 }
 
 .editButton:hover  .hide  {
-    display: inline-block;
+    display: block;
     cursor: pointer;
-    float: right;
+    /*float: right;*/
 }
 
 .renderBoard {
@@ -44,38 +44,13 @@
     border-radius: 3px;
 }
 
-/*
-  height: 280px;
-  width: 280px;
-  background: yellow;
-  padding: 10px;
-  margin: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 3px;
-  box-shadow: 0 2px 4px grey;
-*/
+.panel-footer {
+  display:flex;
+  flex-wrap:nowrap;
+  align-items:center; /* vertical align */
+}
 
-/*
-  flex: 1;
-  height: 50%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-*/
-
-/*.renderForm {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    border-radius: 3px;
-    height: 36px;
-    margin-left: 8px;
-    width: 300px;
-    padding-left: 10px;
-    padding-right: 10px;
-}*/
+.panel-footer em {
+  flex-grow:1;       /* take up rest of line */
+  text-align:center; /* centre text in p */
+}

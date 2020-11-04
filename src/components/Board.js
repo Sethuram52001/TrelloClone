@@ -6,6 +6,8 @@ import { sort } from "../redux/actions";
 import { activeBoard } from "../redux/actions";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import store from '../redux/store';
+import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 class Board extends Component {
 
@@ -23,6 +25,11 @@ class Board extends Component {
 
     componentDidUpdate() {
         console.log("active state from board collection: " + store.getState().active);
+        const { boardID } = this.props.match.params;
+        if (this.state.boardID !== boardID) {
+            this.setState({ boardID });
+            this.props.dispatch(activeBoard(boardID));   
+        }
     }
 
     onDragEnd = (result) => {
@@ -38,8 +45,9 @@ class Board extends Component {
     
     render() { 
 
-        const { lists, cards, boards } = this.props;
+        const { lists, cards, boards, boardOrder } = this.props;
         const boardID = this.state.boardID;
+        //const { boardID } = this.props.match.params;
         console.log(boardID);
         const anotherBoard = boards[boardID];
         console.log(anotherBoard);
@@ -86,7 +94,8 @@ class Board extends Component {
 const mapStateToProps = state => ({
     lists: state.lists,
     cards: state.cards,
-    boards: state.boards
+    boards: state.boards,
+    boardOrder: state.boardOrder
 });
 
 export default connect(mapStateToProps)(Board);
