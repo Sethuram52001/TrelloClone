@@ -19,7 +19,7 @@ class App extends Component {
         <Router>
           <h3 style={{backgroundColor: "#026aa7", color: "white", fontFamily: "cursive"}} class="panel-footer">
             <Navbar boards={boards} boardOrder={boardOrder} class="fa fa-facebook"></Navbar>
-            <em>Trello</em>
+            <em style={{color: "#8bbdd9"}}>Trello</em>
           </h3>
           <Switch>
             <Route path="/" exact component={BoardCollection} />

@@ -70,10 +70,14 @@ class TodoCard extends Component {
                     <div className="card" >
                     <p className="editButton">
                         {text}
-                        <span className="hide">
-                            <i className="fa fa-pencil-square-o" onMouseDown={this.handleEdit}></i>
+                        <div className="hide">
+                            {/*<i className="fa fa-pencil-square-o" onMouseDown={this.handleEdit}></i>*/}
                             <i onMouseDown={this.handleDelete} className="fa fa-trash" aria-hidden="true" style={{paddingRight: "2px"}}></i>
-                        </span>
+                        </div>
+                        <div className="hide">
+                            <i className="fa fa-pencil-square-o" onMouseDown={this.handleEdit}></i>
+                            {/*<i onMouseDown={this.handleDelete} className="fa fa-trash" aria-hidden="true" style={{paddingRight: "2px"}}></i>*/}
+                        </div>        
                     </p>
                     </div>
                 </div>

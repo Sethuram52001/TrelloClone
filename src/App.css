@@ -3,14 +3,17 @@
 }
 
 .editButton {
-    display: inline-block;
-    height: auto;
+    /*display: inline-block;
+    height: auto;*/
+    margin-right: 0px;
 }
 
 .editButton:hover  .hide  {
-    display: block;
+    /*display: inline-block;*/
+    display: inline;
+    float: right;
+    margin-right: 3%;
     cursor: pointer;
-    /*float: right;*/
 }
 
 .renderBoard {
@@ -21,6 +24,19 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.renderForm {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+/*style={{ width: "272px", height: "32px", borderRadius: "4px", margin: "10px"}}*/
+.openForm {
+    width: 272px;
+    height: 32px;
+    border-radius: 4px;
+    margin: 10px;
 }
 
 .board-container {

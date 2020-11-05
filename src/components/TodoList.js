@@ -71,14 +71,18 @@ class TodoList extends Component {
                     <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                         <Droppable droppableId={String(listID)} type="card">
                         {(provided) => (
-                        <div className="card" style={{backgroundColor: "#ebecf0", width: "100%", margin: "10px", marginTop: "10", padding: "2px", borderRadius: "3px", maxHeight: "100%", boxSizing: "border-box"}}>
+                        <div className="card" style={{ backgroundColor: "#ebecf0", width: "100%", margin: "10px", marginTop: "10", padding: "2px", borderRadius: "3px" }}>{/* style={{ backgroundColor: "#ebecf0", width: "100%", margin: "10px", marginTop: "10", padding: "2px", borderRadius: "3px", maxHeight: "100%" }} boxSizing: "border-box"*/}
                         {this.state.editing ? (this.renderEditForm()) : (
-                        <p onMouseDown={this.handleEdit} className="editButton">
+                        <p className="editButton">{/*onMouseDown={this.handleEdit}*/}
                             {this.props.title}
-                            <span className="hide">
-                                {/*<i className="fa fa-pencil-square-o"></i>*/}
+                            <div className="hide">
+                                {/*<i className="fa fa-pencil-square-o" onClick={this.handleEdit}></i>*/}
                                 <i className="fa fa-trash" onClick={this.handleDelete}></i>                
-                            </span>             
+                            </div>                  
+                            <div className="hide">
+                                <i className="fa fa-pencil-square-o" onClick={this.handleEdit}></i>
+                                {/*<i className="fa fa-trash" onClick={this.handleDelete}></i>*/}                
+                            </div>                             
                         </p>            
                         )}
                         <div {...provided.droppableProps} ref={provided.innerRef}>   

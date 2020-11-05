@@ -67,7 +67,7 @@ class Board extends Component {
                     if (list) {
                         const listCards = list.cards.map(cardId => cards[cardId]);
                         return (
-                            <div style={{ width: "272px", margin: "0 4px"}}> 
+                            <div style={{ width: "272px", margin: "0 4px"}}> {/**/}
                                 <TodoList
                                     listID={list.id}
                                     key={list.id}
@@ -85,7 +85,6 @@ class Board extends Component {
                 </div>          
                 )}
                 </Droppable>
-                {/*<AddButton list></AddButton>*/}
             </DragDropContext>
          );
     }

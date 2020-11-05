@@ -45,7 +45,6 @@ class BoardCollection extends Component {
 
         return (  
             <div>
-                <h1>Board Collection</h1>
                 <h3>
                     <i className="fa fa-user-o" ></i>
                     Personal Boards

@@ -86,7 +86,7 @@ class AddButton extends Component {
         const buttonTextOpacity = list ? 1 : 0.5;
 
         return (
-            <div style={{opacity: buttonTextOpacity, cursor: "pointer", color: buttonTextColor, backgroundColor: buttonColor, width: "272px", height: "32px", borderRadius: "4px", margin: "10px"}} onClick={this.openForm}>
+            <div className="openForm" onClick={this.openForm} style={{opacity: buttonTextOpacity, cursor: "pointer", color: buttonTextColor, backgroundColor: buttonColor}}> {/*style={{opacity: buttonTextOpacity, cursor: "pointer", color: buttonTextColor, backgroundColor: buttonColor, width: "272px", height: "32px", borderRadius: "4px", margin: "10px"}}*/}
                 <p><i className="fa fa-plus" aria-hidden="true"></i>{buttonType}</p>
             </div>
         )
