@@ -52,9 +52,11 @@ class TodoCard extends Component {
     renderEditForm = () => {
         return (
             <div>
-                <TextArea placeholder={this.state.text} value={this.state.text} onChange={this.handleChange}></TextArea>
-                <button onMouseDown={this.closeForm}>close</button>
-                <button onClick={this.handleSave}>save</button>
+                <div className="card" style={{width: "100%"}}>
+                    <TextArea placeholder={this.state.text} value={this.state.text} onChange={this.handleChange} autoFocus onBlur={this.closeForm}></TextArea>
+                </div>   
+                {/*<button onMouseDown={this.closeForm}>close</button>*/}
+                <button onClick={this.handleSave} className="btn btn-success">save</button>
             </div>
         )
     }

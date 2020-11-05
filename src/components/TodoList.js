@@ -47,9 +47,13 @@ class TodoList extends Component {
     renderEditForm = () => {
         return (
             <div>
-                <TextArea placeholder={this.state.title} value={this.state.title} onChange={this.handleChange}></TextArea>
-                <button onClick={this.closeForm}>close</button>
-                <button onClick={this.handleSave}>save</button>
+                <div className="card" style={{ width: "100%" }}>
+                    <TextArea placeholder={this.state.title} autoFocus onBlur={this.closeForm} onChange={this.handleChange} value={this.state.title}></TextArea>
+                </div>
+                <div>
+                    {/*<button onClick={this.closeForm}>close</button>*/}
+                    <button onMouseDown={this.handleSave} className="btn btn-success">save</button>
+                </div>
             </div>
         )
     }
@@ -71,7 +75,7 @@ class TodoList extends Component {
                     <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                         <Droppable droppableId={String(listID)} type="card">
                         {(provided) => (
-                        <div className="card" style={{ backgroundColor: "#ebecf0", width: "100%", margin: "10px", marginTop: "10", padding: "2px", borderRadius: "3px" }}>{/* style={{ backgroundColor: "#ebecf0", width: "100%", margin: "10px", marginTop: "10", padding: "2px", borderRadius: "3px", maxHeight: "100%" }} boxSizing: "border-box"*/}
+                        <div className="card" style={{ backgroundColor: "#ebecf0", width: "100%", margin: "10px", marginTop: "10", padding: "2px", borderRadius: "3px", boxSizing: "border-box"}}>{/* style={{ backgroundColor: "#ebecf0", width: "100%", margin: "10px", marginTop: "10", padding: "2px", borderRadius: "3px", maxHeight: "100%" }} boxSizing: "border-box"*/}
                         {this.state.editing ? (this.renderEditForm()) : (
                         <p className="editButton">{/*onMouseDown={this.handleEdit}*/}
                             {this.props.title}
