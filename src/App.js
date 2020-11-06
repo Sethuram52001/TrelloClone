@@ -17,8 +17,8 @@ class App extends Component {
     return ( 
       <div>
         <Router>
-          <h3 style={{backgroundColor: "#026aa7", color: "white", fontFamily: "cursive"}} class="panel-footer">
-            <Navbar boards={boards} boardOrder={boardOrder} class="fa fa-facebook"></Navbar>
+          <h3 style={{backgroundColor: "#026aa7", color: "white"}} class="panel-footer">
+            <Navbar boards={boards} boardOrder={boardOrder}></Navbar>
             <em style={{color: "#8bbdd9"}}>Trello</em>
           </h3>
           <Switch>

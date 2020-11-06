@@ -75,7 +75,7 @@ class TodoList extends Component {
                     <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                         <Droppable droppableId={String(listID)} type="card">
                         {(provided) => (
-                        <div className="card" style={{ backgroundColor: "#ebecf0", width: "100%", margin: "10px", marginTop: "10", padding: "2px", borderRadius: "3px", boxSizing: "border-box"}}>{/* style={{ backgroundColor: "#ebecf0", width: "100%", margin: "10px", marginTop: "10", padding: "2px", borderRadius: "3px", maxHeight: "100%" }} boxSizing: "border-box"*/}
+                        <div className="card" style={{ backgroundColor: "#ebecf0", width: "272px", margin: "4px", marginTop: "10", padding: "2px", borderRadius: "3px", boxSizing: "border-box"}}>{/* style={{ backgroundColor: "#ebecf0", width: "100%", margin: "10px", marginTop: "10", padding: "2px", borderRadius: "3px", maxHeight: "100%" }} boxSizing: "border-box"*/}
                         {this.state.editing ? (this.renderEditForm()) : (
                         <p className="editButton">{/*onMouseDown={this.handleEdit}*/}
                             {this.props.title}

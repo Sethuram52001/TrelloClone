@@ -61,13 +61,13 @@ class Board extends Component {
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <Droppable droppableId="all-lists" direction="horizontal" type="list">
                 {provided => (
-                <div  {...provided.droppableProps} ref={provided.innerRef} className="d-flex">{/* style={{display: "flex", flexDirection: "row"}}*/}    
+                <div  {...provided.droppableProps} ref={provided.innerRef} className="d-flex">{/* className="d-flex" style={{display: "flex", flexDirection: "row"}}*/}    
                 {listOrder.map((listID, index) => {
                     const list = lists[listID];
                     if (list) {
                         const listCards = list.cards.map(cardId => cards[cardId]);
                         return (
-                            <div style={{ width: "272px", margin: "0 4px"}}>
+                            /*<div style={{ width: "272px", margin: "0 4px"}}>*/ 
                                 <TodoList
                                     listID={list.id}
                                     key={list.id}
@@ -76,7 +76,7 @@ class Board extends Component {
                                     index={index}
                                     boardID={this.state.boardID}
                                 ></TodoList>
-                            </div>
+                            /*</div>*/
                         );
                     }
                 })}

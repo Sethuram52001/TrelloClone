@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .hide {
     display: none;
 }
@@ -69,4 +73,9 @@
 .panel-footer em {
   flex-grow:1;       /* take up rest of line */
   text-align:center; /* centre text in p */
+  font-family: 'Lobster', cursive;
+}
+
+.card {
+    font-family: 'Roboto';
 }
